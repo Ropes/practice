@@ -77,3 +77,46 @@ func TestSortSmallestN(t *testing.T) {
 		})
 	}
 }
+
+func TestSmallestN(t *testing.T) {
+	tests := []struct {
+		input    []int
+		N        int
+		smallest []int
+	}{
+		{
+			input:    []int{2, 1, 6, 3, 9, 7, 5},
+			N:        7,
+			smallest: []int{1, 2, 3, 5, 6, 7, 9},
+		},
+		{
+			input:    []int{2, 1, 6, 3, 9, 7, 5},
+			N:        2,
+			smallest: []int{1, 2},
+		},
+		{
+			input:    []int{2, -1, 6, 3, 9, 7, 5},
+			N:        3,
+			smallest: []int{-1, 2, 3},
+		},
+		{
+			input:    []int{2, -1, -1, 3, 9, 7, 5},
+			N:        3,
+			smallest: []int{-1, -1, 2},
+		},
+		{
+			input:    []int{2, -1, -1, 3, 9, 7, 5},
+			N:        2,
+			smallest: []int{-1, -1},
+		},
+	}
+
+	for i, test := range tests {
+		t.Run(fmt.Sprintf("testFindSmallest-%d", i), func(t *testing.T) {
+			mins := findNMins(test.input, test.N)
+			if !reflect.DeepEqual(mins, test.smallest) {
+				t.Errorf("findSmallest %v != %v", mins, test.smallest)
+			}
+		})
+	}
+}
