@@ -50,5 +50,4 @@ func TestBalancedRunes(t *testing.T) {
 			}
 		})
 	}
-
 }
