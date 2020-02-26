@@ -8,9 +8,14 @@ func MatchingInts(a, b []int) []int {
 
 	j := 0
 	for i := 0; i < len(a); i++ {
-		for ; j <= i; j++ {
+		if a[i] < b[j] { // Skip forward over smaller values
+			continue
+		}
+		for j < len(b)-1 { // Increment j to skip small b values
 			if b[j] >= a[i] {
 				break
+			} else if j < len(b)-1 {
+				j++
 			}
 		}
 		if a[i] == b[j] {
