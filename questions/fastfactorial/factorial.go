@@ -21,3 +21,13 @@ func FastFib(n int) int {
 
 	return f0
 }
+
+func SlowFib(n int) int {
+	if n == 0 {
+		return 0
+	} else if n == 1 {
+		return 1
+	}
+
+	return SlowFib(n-1) + SlowFib(n-2)
+}

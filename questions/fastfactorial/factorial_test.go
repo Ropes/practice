@@ -45,8 +45,14 @@ func TestFastFib(t *testing.T) {
 	}
 
 	for i, test := range tests {
-		t.Run(fmt.Sprintf("[%d]n:%d", i, test.N), func(t *testing.T) {
+		t.Run(fmt.Sprintf("fastfib[%d]n:%d", i, test.N), func(t *testing.T) {
 			x := FastFib(test.N)
+			if x != test.Exp {
+				t.Errorf("incorrect fib calculated: %d != %d", x, test.Exp)
+			}
+		})
+		t.Run(fmt.Sprintf("slowfib[%d]n:%d", i, test.N), func(t *testing.T) {
+			x := SlowFib(test.N)
 			if x != test.Exp {
 				t.Errorf("incorrect fib calculated: %d != %d", x, test.Exp)
 			}
