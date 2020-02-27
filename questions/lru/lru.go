@@ -19,6 +19,7 @@ func (l *LRUCache) Get(key int) int {
 	if !ok {
 		return -1
 	}
+	// TODO: Should the get push this key onto the stack upgrading its priority?
 	return v
 }
 
