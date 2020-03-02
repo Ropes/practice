@@ -10,16 +10,13 @@ func FastFib(n int) int {
 	if n == 0 {
 		return f0
 	}
-	if n < 2 {
-		return f1
-	}
 
-	for i := 0; i < n; i++ {
+	for i := 2; i < n; i++ {
 		tmp := f0 + f1
 		f0, f1 = f1, tmp
 	}
 
-	return f0
+	return f0 + f1
 }
 
 func SlowFib(n int) int {
